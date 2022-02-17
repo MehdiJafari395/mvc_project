@@ -60,8 +60,8 @@ class Config
     public static function get($key)
     {
         $instance = self::getInstance();
-        if(isset($instance->config_dat_array[$key])){
-            return $instance->config_dat_array[$key];
+        if(isset($instance->config_dot_array[$key])){
+            return $instance->config_dot_array[$key];
         }
         throw new Exception("$key not exist in config array");
     }

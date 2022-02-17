@@ -2,6 +2,7 @@
 
 namespace System\Database\DBBuilder;
 
+use System\Config\Config;
 use System\Database\DBConnection\DBConnection;
 
 class DBBuilder
@@ -25,9 +26,10 @@ class DBBuilder
     private function getMigrations()
     {
         $oldMigrations = $this->getOldMigrations();
-        $migrationsDirectory = BASE_DIR . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "migrations" . DIRECTORY_SEPARATOR;
+        $migrationsDirectory = Config::get('app.BASE_DIR') . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "migrations" .
+            DIRECTORY_SEPARATOR;
         $allMigrations = glob($migrationsDirectory . "*.php");
-        $newMigrations = array_diff($oldMigrations, $allMigrations);
+        $newMigrations = array_diff($allMigrations, $oldMigrations);
         $this->putMigrations($allMigrations);
         // get sql code from migrations and execute those
         $sqlCodeArray = [];
@@ -40,12 +42,12 @@ class DBBuilder
 
     private function getOldMigrations()
     {
-        $oldMigrations = file_get_contents(__DIR__.'oldTables.db');
+        $oldMigrations = file_get_contents(__DIR__.'/oldTables.db');
         return empty($oldMigrations) ? [] : unserialize($oldMigrations);
     }
 
     private function putMigrations($data)
     {
-        file_put_contents(__DIR__."oldTables.db", serialize($data));
+        file_put_contents(__DIR__."/oldTables.db", serialize($data));
     }
 }

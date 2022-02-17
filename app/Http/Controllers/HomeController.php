@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use System\Database\DBBuilder\DBBuilder;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $post = Post::paginate(2);
-        echo '<pre>';
-        print_r($post);
+        $o = new DBBuilder();
+        echo 'hello2!! welcome to my mvc framework from Home controller ';
     }
 
     public function create()

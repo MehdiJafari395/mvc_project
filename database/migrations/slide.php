@@ -3,37 +3,37 @@
 
 return [
 
+
     "
 
-CREATE TABLE `posts` (
+CREATE TABLE `slides` (
   `id` bigint(20) NOT NULL,
   `title` varchar(191) NOT NULL,
+  `url` varchar(191) NOT NULL,
+  `address` varchar(191) NOT NULL,
+  `amount` varchar(191) NOT NULL,
   `body` text NOT NULL,
-  `image` text NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  `cat_id` int(10) NOT NULL,
-  `published_at` datetime NOT NULL,
-  `status` tinyint(5) NOT NULL DEFAULT '0',
+  `image` varchar(191) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
 --
--- Indexes for table `posts`
+-- Indexes for table `slides`
 --
-ALTER TABLE `posts`
+ALTER TABLE `slides`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for table `posts`
+-- AUTO_INCREMENT for table `slides`
 --
-ALTER TABLE `posts`
+ALTER TABLE `slides`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
     
     "
-
 
 ];

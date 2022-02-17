@@ -11,7 +11,9 @@ function view($dir, $vars = []){
 }
 
 function dd($value, $die = true){
+    echo '<div style="background-color:black; color:#33ff33; padding: 5px;font-weight: bolder">';
     var_dump($value);
+    echo '</div>';
     if($die){
         exit;
     }
